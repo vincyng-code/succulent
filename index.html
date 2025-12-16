@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个GitHub页面</title>
+    <title>多肉植物品種圖鑑</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #7db249;
+            --secondary-color: #e8f4d9;
+            --accent-color: #f5a623;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --border-color: #ddd;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,156 +24,2163 @@
         }
         
         body {
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f9ee;
+            padding-bottom: 40px;
         }
         
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多肉植物品種圖鑑</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7db249;
+            --secondary-color: #e8f4d9;
+            --accent-color: #f5a623;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --border-color: #ddd;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f9ee;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #94c045);
+            color: white;
+            padding: 20px 0;
             text-align: center;
-            max-width: 600px;
-            margin: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
         }
         
         h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 2.3rem;
+            margin-bottom: 8px;
         }
         
-        p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+        .subtitle {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .features {
-            text-align: left;
-            background: #f8f9fa;
+        .controls {
+            background-color: white;
             padding: 20px;
             border-radius: 10px;
-            margin: 25px 0;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
         }
         
-        .features li {
-            margin: 10px 0;
-            padding-left: 10px;
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
         }
         
-        .button {
-            display: inline-block;
-            background: #667eea;
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(125, 178, 73, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 18px;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+        
+        .filter-btn:hover {
+            background-color: #d8e8c0;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
             color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
+        }
+        
+        .favorites-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background-color: white;
+            border: 2px solid var(--accent-color);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--accent-color);
+        }
+        
+        .favorites-toggle:hover {
+            background-color: #fff9f0;
+        }
+        
+        .favorites-toggle.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .plants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .plant-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .plant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .plant-image {
+            height: 200px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plant-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .plant-card:hover .plant-image img {
+            transform: scale(1.05);
+        }
+        
+        .plant-image-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .plant-header {
+            padding: 20px 20px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .plant-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ddd;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 5px;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .favorite-btn:hover {
+            color: #ffc107;
+            transform: scale(1.1);
+        }
+        
+        .favorite-btn.favorited {
+            color: var(--accent-color);
+        }
+        
+        .plant-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .plant-difficulty {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .difficulty-stars {
+            color: var(--accent-color);
             font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin: 10px;
         }
         
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        .plant-preview {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         
-        .counter {
-            margin-top: 30px;
-            font-size: 1.2em;
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eee;
         }
         
-        #count {
+        .preview-label {
+            font-weight: 500;
+            color: #666;
+            min-width: 100px;
+        }
+        
+        .preview-value {
+            text-align: right;
+            flex-grow: 1;
+        }
+        
+        .plant-price {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .plant-actions {
+            padding: 15px 20px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .details-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            color: white;
+        }
+        
+        .details-btn:hover {
+            background-color: #6a9e3a;
+        }
+        
+        /* 詳細資訊模態框樣式 */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .detail-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            opacity: 1;
+        }
+        
+        .detail-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-modal.active .detail-content {
+            transform: translateY(0);
+        }
+        
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color), #94c045);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+        }
+        
+        .detail-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .detail-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .detail-title {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .detail-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .detail-body {
+            padding: 30px;
+        }
+        
+        /* 圖片輪播區 */
+        .carousel-section {
+            margin-bottom: 30px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .carousel-slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f9ee;
+        }
+        
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .carousel-prev {
+            left: 15px;
+        }
+        
+        .carousel-next {
+            right: 15px;
+        }
+        
+        .carousel-counter {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .carousel-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        
+        .carousel-thumbnail {
+            width: 70px;
+            height: 50px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+        
+        .carousel-thumbnail.active {
+            opacity: 1;
+            border-color: var(--primary-color);
+        }
+        
+        .carousel-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 基本信息區 */
+        .info-section {
+            margin-bottom: 30px;
+        }
+        
+        .info-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-section h3 i {
+            color: var(--accent-color);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90%, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-weight: 500;
+        }
+        
+        .difficulty-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .difficulty-display .stars {
+            color: var(--accent-color);
+            font-size: 1.2rem;
             font-weight: bold;
-            color: #667eea;
-            font-size: 1.5em;
+            letter-spacing: 2px;
         }
         
-        @media (max-width: 600px) {
-            .container {
+        .difficulty-display .level {
+            background-color: var(--secondary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .detail-text {
+            background-color: #f9fbf5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+        
+        .detail-text p {
+            margin-bottom: 15px;
+            white-space: pre-line;
+        }
+        
+        .care-tips {
+            background-color: #f0f7e9;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+        
+        .care-tips p {
+            white-space: pre-line;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: 100%;
+            }
+            
+            .plants-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .carousel-container {
+                height: 300px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+            
+            .detail-body {
                 padding: 20px;
             }
-            h1 {
-                font-size: 2em;
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .plants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plant-preview {
+                padding: 15px;
+            }
+            
+            .preview-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .preview-label, .preview-value {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎉 成功部署！</h1>
-        <p>恭喜！你的 HTML 页面已经在 GitHub Pages 上成功运行。</p>
-        
-        <div class="features">
-            <p><strong>页面特性：</strong></p>
-            <ul>
-                <li>✅ 响应式设计（适配手机和电脑）</li>
-                <li>✅ 现代化渐变背景</li>
-                <li>✅ 交互式按钮效果</li>
-                <li>✅ JavaScript 计数器功能</li>
-                <li>✅ 美观的阴影和圆角设计</li>
-            </ul>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-leaf"></i> 多肉植物品種圖鑑</h1>
+            <p class="subtitle">當前收錄48種多肉植物資料，包含基本信息、核心觀賞點、四季養護要訣等資訊，請配會PPT觀看</p>
         </div>
-        
-        <p>你可以通过 GitHub Pages 链接在任何设备上访问此页面。</p>
-        
-        <div class="counter">
-            点击次数：<span id="count">0</span>
-            <br><br>
-            <a href="#" class="button" id="clickBtn">点击我！</a>
-            <a href="#" class="button" id="resetBtn">重置</a>
-        </div>
-        
-        <p style="margin-top: 30px; font-size: 0.9em; color: #888;">
-            页面更新时间：<span id="updateTime"></span>
-        </p>
-    </div>
-
-    <script>
-        // 计数器功能
-        let count = 0;
-        const countElement = document.getElementById('count');
-        const clickBtn = document.getElementById('clickBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        
-        clickBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            count++;
-            countElement.textContent = count;
-            // 添加点击效果
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 100);
-        });
-        
-        resetBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            count = 0;
-            countElement.textContent = count;
-        });
-        
-        // 显示更新时间
-        document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
-        
-        // 添加加载动画
-        window.addEventListener('load', function() {
-            document.querySelector('.container').style.opacity = '0';
-            document.querySelector('.container').style.transform = 'translateY(20px)';
+    </header>
+    
+    <main class="container">
+        <div class="controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="搜尋多肉品種名稱或科屬...">
+            </div>
             
-            setTimeout(() => {
-                document.querySelector('.container').style.transition = 'opacity 0.5s, transform 0.5s';
-                document.querySelector('.container').style.opacity = '1';
-                document.querySelector('.container').style.transform = 'translateY(0)';
-            }, 100);
-        });
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">全部分類</button>
+                <button class="filter-btn" data-category="新手入門">新手入門</button>
+                <button class="filter-btn" data-category="經典熱門">經典熱門</button>
+                <button class="filter-btn" data-category="垂吊與特殊形態">垂吊/特殊</button>
+                <button class="filter-btn" data-category="動物擬態大師">動物擬態</button>
+                <button class="filter-btn" data-category="幾何奇觀與自然仿生">幾何奇觀</button>
+                <button class="filter-btn" data-category="高端收藏">高端收藏</button>
+                <button class="filter-btn" data-category="頂級收藏">頂級收藏</button>
+            </div>
+            
+            <button class="favorites-toggle" id="favoritesToggle">
+                <i class="far fa-heart"></i> 只看收藏
+            </button>
+            
+            <div class="stats">
+                <span id="totalCount">共 48 個品種</span>
+                <span id="filteredCount">顯示 48 個</span>
+                <span id="favoritesCount">已收藏 0 個</span>
+            </div>
+        </div>
+        
+        <div class="plants-grid" id="plantsGrid">
+            <!-- 植物卡片將通過JavaScript動態生成 -->
+        </div>
+    </main>
+    
+    <!-- 詳細資訊模態框 -->
+    <div class="detail-modal" id="detailModal">
+        <div class="detail-content">
+            <div class="detail-header">
+                <button class="detail-close" id="detailClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="detail-title" id="detailPlantName">品種名稱</h2>
+                <div class="detail-subtitle">
+                    <span id="detailPlantCategory">分類</span>
+                </div>
+                <div class="detail-subtitle">
+                    <span class="difficulty-display">
+                        <span class="stars" id="detailPlantStars">★★★☆☆</span>
+                        <span class="level" id="detailPlantLevel">中等難度</span>
+                    </span>
+                </div>
+            </div>
+            <div class="detail-body">
+                <!-- 圖片輪播區 -->
+                <div class="carousel-section">
+                    <div class="carousel-container">
+                        <div class="carousel-slide">
+                            <img id="carouselImage" src="" alt="">
+                        </div>
+                        <button class="carousel-btn carousel-prev" id="carouselPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-next" id="carouselNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="carousel-counter" id="carouselCounter">1 / 1</div>
+                    </div>
+                    <div class="carousel-thumbnails" id="carouselThumbnails">
+                        <!-- 縮略圖將動態生成 -->
+                    </div>
+                </div>
+                
+                <!-- 基本信息區 -->
+                <div class="info-section">
+                    <h3><i class="fas fa-info-circle"></i> 基本信息</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">科屬</span>
+                            <span class="info-value" id="detailPlantFamily">景天科</span>
+                        </div>
+                        <br>
+                        <div class="info-item">
+                            <span class="info-label">主要產地</span>
+                            <span class="info-value" id="detailPlantOrigin">墨西哥 / 中國各地</span>
+                        </div>
+                        <br>
+                        <div class="info-item">
+                            <span class="info-label">價格區間</span>
+                            <span class="info-value plant-price" id="detailPlantPrice">10 - 50元</span>
+                        </div>
+                        <br>
+                        <div class="info-item">
+                            <span class="info-label">分級原因</span>
+                            <span class="info-value" id="detailPlantReason">經典品種，易養護</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 核心觀賞點 -->
+                <div class="info-section">
+                    <h3><i class="fas fa-eye"></i> 核心觀賞點</h3>
+                    <div class="detail-text">
+                        <p id="detailPlantFeatures">這裡顯示品種的核心觀賞點描述...</p>
+                    </div>
+                </div>
+                
+                <!-- 四季養護要訣 -->
+                <div class="info-section">
+                    <h3><i class="fas fa-sun"></i> 四季養護要訣</h3>
+                    <div class="care-tips">
+                        <p id="detailPlantCare">這裡顯示四季養護要訣...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="container">
+        <p>多肉植物圖鑑 &copy; 2025 | 資料僅供參考，實際養護需結合具體環境</p>
+        <p>本圖鑑適合電腦、手機和平板設備使用</p>
+    </footer>
+    
+    <script>
+        // 多肉植物完整資料 (48個品種)
+        let plantsData = [
+            {
+                id: 1,
+                name: "秋麗",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科風車草屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "極易群生，葉片有白粉，會隨光照從綠變為橙、粉或紫，像爆崽的「多肉媽媽」，顏色變化豐富。",
+                care: "春秋：全日照，土乾透澆透。\n夏冬：適當控水。\n需要充足光照才能呈現最佳顏色，耐旱性強。",
+                price: "5 - 25元",
+                reason: "生長速度快，易爆盆群生，能明顯感受養護帶來的顏色變化，成就感強，適合新手。",
+                images: [
+                    "https://i.postimg.cc/fLNV2sxT/秋麗.jpg",
+                    "https://i.postimg.cc/pTHmGvDm/秋麗2.jpg",
+                    "https://i.postimg.cc/C1sz92Nw/秋麗3.jpg",
+                    "https://i.postimg.cc/Y9zhTP3r/秋麗4.jpg",
+                    "https://i.postimg.cc/FR4YWvjf/秋麗5.jpg"
+                ]
+            },
+            {
+                id: 2,
+                name: "白牡丹",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科(風車草屬×擬石蓮花屬)",
+                origin: "園藝雜交 / 中國各地",
+                features: "形似一朵永不凋謝的白玫瑰或牡丹，葉片排列緊湊厚實，被薄白粉，外觀優雅。",
+                care: "春秋：土乾透澆透。\n夏冬：嚴格控水，夏季需通風。\n忌葉心積水，避免潮濕環境。",
+                price: "5 - 25元",
+                reason: "經典雜交普貨，皮實好養，繁殖快，是新手練習葉插的常見品種，繼承了父本(朧月)好養的特性。",
+                images: [
+                    "https://i.postimg.cc/TwJpBs9J/白牡丹.jpg",
+                    "https://i.postimg.cc/nzGCNWkK/白牡丹2.jpg",
+                    "https://i.postimg.cc/gJHn17Dq/白牡丹3.webp"
+                ]
+            },
+            {
+                id: 3,
+                name: "黃麗",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "墨西哥 / 中國各地",
+                features: "葉片如黃色寶石或玫瑰，日照充足時葉緣泛紅，顏色明亮，株形緊湊。",
+                care: "春秋冬：全日照，土乾透澆透。\n夏：遮陰控水。\n需要較多光照維持肥厚株形，防止徒長。",
+                price: "5 - 20元",
+                reason: "習性強健，耐旱，對環境要求不嚴，易養出狀態，是經典新手品種。",
+                images: [
+                    "https://i.postimg.cc/SRQJ4GT7/黃麗2.webp",
+                    "https://i.postimg.cc/x8jcQPxM/黃麗.jpg",
+                    "https://i.postimg.cc/MHZvwYPY/黃麗3.jpg",
+                    "https://i.postimg.cc/RhCNmTs1/黃麗4.avif",
+                    "https://i.postimg.cc/d3QLF9H6/黃麗5.avif"
+                ]
+            },
+            {
+                id: 4,
+                name: "十二之卷",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "百合科十二卷屬",
+                origin: "南非 / 中國各地溫室",
+                features: "葉片硬質，佈滿白色橫條斑紋，形態挺拔不易徒長，有獨特的幾何美感。",
+                care: "全年：明亮散射光。\n春秋：土乾透澆透。\n夏冬：減少澆水。\n耐陰，忌強光直射。",
+                price: "10 - 50元",
+                reason: "對光照需求不嚴，適合室內窗邊養護，是新手體驗十二卷屬的入門選擇。",
+                images: [
+                    "https://i.postimg.cc/rsyKT9Zc/十二之卷.webp",
+                    "https://i.postimg.cc/cC1rWck0/十二之卷2.png",
+                    "https://i.postimg.cc/GtM9msVN/十二之卷3.jpg"
+                ]
+            },
+	    {
+                id: 5,
+                name: "紅寶石",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科 × 景天屬與擬石蓮花屬雜交",
+                origin: "園藝雜交 / 中國雲南、山東青州",
+                features: "在充足光照和溫差下，葉片可通體變為鮮豔的深紅色，如同紅寶石般璀璨。",
+                care: "春秋冬：需全日照上色，土乾透澆透。\n夏：遮陰控水。\n缺水時葉片會變軟發皺。",
+                price: "5 - 30元",
+                reason: "上色效果驚人，極易群生，生長繁殖速度快，性價比極高，是新手體驗多肉變色的絕佳選擇。",
+                images: [
+                    "https://i.postimg.cc/qvGBJKn0/紅寶石3.jpg",
+                    "https://i.postimg.cc/t4zRq6PX/紅寶石.jpg",
+                    "https://i.postimg.cc/y8T61R97/紅寶石4.jpg",
+                    "https://i.postimg.cc/13KRmF6R/紅寶石2.jpg"
+                ]
+            },
+            {
+                id: 6,
+                name: "可愛玫瑰",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "形態酷似一朵永不凋謝的玫瑰花，包裹性強，顏色多為灰藍色或粉紫色。",
+                care: "春秋：全日照防攤開，土乾透澆透。\n夏：遮陰通風。\n需要強光防止「攤大餅」變形。",
+                price: "10 - 50元",
+                reason: "造型討喜，滿足「多肉玫瑰」的想像，養護難度低，價格親民。",
+                images: [
+                    "https://i.postimg.cc/P5HrnyCm/可愛玫瑰4.jpg",
+                    "https://i.postimg.cc/VkwLPgJG/可愛玫瑰.webp",
+                    "https://i.postimg.cc/7Z4Yr95R/可愛玫瑰5.jpg",
+                    "https://i.postimg.cc/rwTF2jDY/可愛玫瑰2.png",
+                    "https://i.postimg.cc/8zGPg474/可愛玫瑰3.avif"
+                ]
+            },
+
+            {
+                id: 7,
+                name: "冷燈玉露",
+                category: "新手入門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "百合科十二卷屬",
+                origin: "南非 / 中國、日本、韓國",
+                features: "晶瑩剔透的「窗」是最大特色，如同冰燈，光澤感極強。",
+                care: "全年：明亮散射光。\n春秋：土乾透澆透。\n夏冬：減少澆水。\n喜散光忌暴曬。",
+                price: "30 - 300元",
+                reason: "耐陰，適合室內養護，是玉露類的經典品種。",
+                images: [
+                    "https://i.postimg.cc/fyHkR01D/冷燈玉露.jpg",
+                    "https://i.postimg.cc/6qHTpGF9/冷燈玉露3.jpg",
+                    "https://i.postimg.cc/Znf05yXY/冷燈玉露1.jpg"
+                ]
+            },
+            {
+                id: 8,
+                name: "不死鳥",
+                category: "新手入門",
+                difficulty: "★☆☆☆☆",
+                difficultyLevel: "極容易",
+                family: "景天科伽藍菜屬",
+                origin: "馬達加斯加 / 中國各地",
+                features: "葉緣會長出大量整齊的「小崽」，落地即生根，生命力極其頑強震撼。",
+                care: "全年：土乾透澆水，寧乾勿濕，適應性強。\n幾乎不需要特別照顧也能存活。",
+                price: "5 - 20元",
+                reason: "生命力最頑強的多肉之一，幾乎養不死，適合絕對新手建立信心。",
+                images: [
+                    "https://i.postimg.cc/zDPJ35VL/不死鳥.jpg",
+                    "https://i.postimg.cc/Wpf2tjhr/不死鳥2.jpg",
+                    "https://i.postimg.cc/8kn1sDjv/不死鳥4.webp",
+                    "https://i.postimg.cc/xjF0qYcz/不死鳥5.jpg",
+                    "https://i.postimg.cc/FFn91m7k/不死鳥3.jpg",
+                    "https://i.postimg.cc/7PQxbDf0/不死鳥6.jpg"
+                ]
+            },
+
+            {
+                id: 9,
+                name: "乙女心",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "墨西哥 / 中國各地",
+                features: "葉片肥厚似「嬰兒手指」，葉尖易變紅，可愛俏皮，容易群生成老樁。",
+                care: "春秋冬：全日照。\n夏：明亮散射光，嚴格控水。\n春秋加大溫差可使「指尖」更紅潤。",
+                price: "8 - 35元",
+                reason: "形態可愛，習性強健，是景天屬中經久不衰的人氣品種。",
+                images: [
+                    "https://i.postimg.cc/J7Ksq90Y/乙女心2.jpg",
+                    "https://i.postimg.cc/8kw7Hqcx/乙女心1.jpg",
+                    "https://i.postimg.cc/mZVPw0kJ/乙女心3.webp",
+                    "https://i.postimg.cc/J7Ksq90P/乙女心4.webp",
+                    "https://i.postimg.cc/tRDs5LJf/乙女心5.jpg"
+                ]
+            },
+            {
+                id: 10,
+                name: "桃太郎",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "墨西哥 / 中國各地",
+                features: "標準蓮座形，葉片包裹緊密，葉尖有經典醒目的紅點（美人痣），形態周正。",
+                care: "春秋冬：全日照。\n夏：遮陰通風，避免葉心積水。\n澆水時注意不要淋到葉心。",
+                price: "10 - 60元",
+                reason: "擬石蓮屬的標杆品種，紅點是其標誌，養護不難且易出狀態，深受喜愛。",
+                images: [
+                    "https://i.postimg.cc/L6bndLz3/桃太郎4.jpg",
+                    "https://i.postimg.cc/PrRPGYm0/桃太郎2.jpg",
+                    "https://i.postimg.cc/VLVdynjH/桃太郎3.jpg",
+                    "https://i.postimg.cc/xT4crMKp/桃太郎_吉娃娃.png"
+                ]
+            },
+            {
+                id: 11,
+                name: "黛比",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科風車草屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "葉片呈穩定的粉紫色，是少數能長期保持紫色的品種之一，顏色持久鮮豔。",
+                care: "全年：盡量全日照。\n春秋：土乾透澆透。\n夏冬：嚴格控水。\n光照不足會變灰綠色。",
+                price: "15 - 65元",
+                reason: "紫色系多肉的代表，顏色穩定持久，觀賞期長，顏值在線。",
+                images: [
+                    "https://i.postimg.cc/mg1hTkjb/黛比.jpg",
+                    "https://i.postimg.cc/nh9Mnr2M/黛比2.jpg",
+                    "https://i.postimg.cc/s2FxxzHD/黛比3.webp",
+                    "https://i.postimg.cc/Gp0ttRgb/黛比4.jpg"
+                ]
+            },
+            {
+                id: 12,
+                name: "白鳳",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "大型品種，葉片寬大，被厚厚白粉，可養成老樁，氣質大氣優雅。",
+                care: "春秋：全日照。\n夏：遮陰保白粉。\n冬：全日照，幾乎斷水。\n白粉是保護層，盡量別觸摸。",
+                price: "20 - 100元",
+                reason: "生長快，易有成就感，株型大氣，是打造多肉盆景的常見骨架品種。",
+                images: [
+                    "https://i.postimg.cc/JhbnBFSg/白鳳2.webp",
+                    "https://i.postimg.cc/hG9j7YNH/白鳳.png"
+                ]
+            },
+            {
+                id: 13,
+                name: "小球玫瑰",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "迷你蓮座形，光照充足時可變為深酒紅色，如絲絨玫瑰，易形成密集群生。",
+                care: "全年：需全日照防徒長。\n春秋：土乾透澆透。\n夏冬：嚴格控水。\n多曬才能緊密上色。",
+                price: "8 - 40元",
+                reason: "容易養出極致狀態，顏色深邃，易爆盆形成「玫瑰地毯」，視覺效果強。",
+                images: [
+                    "https://i.postimg.cc/sXs2PcrR/小球玫瑰.jpg",
+                    "https://i.postimg.cc/26r5dwDm/小球玫瑰2.jpg",
+                    "https://i.postimg.cc/9MCfPph5/小球玫瑰3.jpg",
+                    "https://i.postimg.cc/tTpgd5jC/小球玫瑰4.webp",
+                    "https://i.postimg.cc/Y9MSN3Hr/小球玫瑰5.jpg"
+                ]
+            },
+            {
+                id: 14,
+                name: "唐印",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科伽藍菜屬",
+                origin: "南非 / 中國各地",
+                features: "大型品種，葉片寬大如扇，出狀態時通體可變為鮮明的硃紅色，色彩奪目。",
+                care: "春秋：全日照上色。\n夏：適當遮陰。\n冬：全日照，保暖。\n有明顯季節性色彩變化。",
+                price: "15 - 80元",
+                reason: "季節性色彩變化極其明顯，秋冬季節一片火紅，觀賞性極高，養護簡單。",
+                images: [
+                    "https://i.postimg.cc/tTk4Bxqk/唐印.jpg",
+                    "https://i.postimg.cc/9MbQL7mp/唐印2.webp",
+                    "https://i.postimg.cc/rmjwfrVh/唐印4.webp",
+                    "https://i.postimg.cc/C17xcqhk/唐印3.jpg",
+                    "https://i.postimg.cc/j5cSM7x3/唐印5.jpg"
+                ]
+            },
+            {
+                id: 15,
+                name: "雨滴",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國",
+                features: "葉片上擁有獨一無二的瘤狀凸起，宛如葉面上的雨滴，形態奇特，辨識度極高。",
+                care: "春秋：全日照維持株型。\n夏：遮陰，忌葉心積水。\n需要充足光照維持凸起明顯。",
+                price: "30 - 150元",
+                reason: "外觀辨識度極高，「雨滴」凸起是其獨特標籤，深受收藏者喜愛。",
+                images: [
+                    "https://i.postimg.cc/9MnvXm1s/雨滴2.jpg",
+                    "https://i.postimg.cc/Y9sJ2r8Z/雨滴1.webp",
+                    "https://i.postimg.cc/850qkpw2/雨滴4.avif",
+                    "https://i.postimg.cc/0QBL5kcR/雨滴5.jpg",
+                    "https://i.postimg.cc/hj5H4Dpn/雨滴6.jpg",
+                    "https://i.postimg.cc/PxRBfXKc/雨滴3.jpg"
+                ]
+            },
+            {
+                id: 16,
+                name: "廣寒宮",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "墨西哥 / 中國雲南、山東",
+                features: "大型薄葉品種，被厚白粉，呈淡雅的藍粉色，氣質清冷如月光仙子。",
+                care: "春秋：全日照。\n夏：遮陰通風，忌潮濕。\n勿觸碰白粉。\n需要強光照和良好通風。",
+                price: "20 - 100元",
+                reason: "「薄葉三仙」之首，株型舒展優雅，是構建多肉花園景觀的經典骨架品種。",
+                images: [
+                    "https://i.postimg.cc/6TsgRMkr/廣寒宮.jpg",
+                    "https://i.postimg.cc/pyN48swY/廣寒宮3.jpg",
+                    "https://i.postimg.cc/6TsgRMkf/廣寒宮5.jpg",
+                    "https://i.postimg.cc/YjcZgd5N/廣寒宮4.webp",
+                    "https://i.postimg.cc/Sj038gBW/廣寒宮2.jpg"
+                ]
+            },
+            {
+                id: 17,
+                name: "晚霞",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國",
+                features: "葉片帶白粉，顏色可由藍紫色漸變為粉紫色，如同日落時分的晚霞，色彩絢麗。",
+                care: "春秋冬：全日照。\n夏：適當遮陰，控水顏色更豔。\n喜光，夏季需適當遮陰以防曬傷。",
+                price: "25 - 120元",
+                reason: "色彩變化豐富夢幻，是紫色系多肉的代表作之一，觀賞期長。",
+                images: [
+                    "https://i.postimg.cc/7PCL3fvJ/晚霞3.jpg",
+                    "https://i.postimg.cc/L4qstndz/晚霞6.webp",
+                    "https://i.postimg.cc/FFfKy7tf/晚霞.webp",
+                    "https://i.postimg.cc/3rywXdMp/晚霞5.jpg",
+                    "https://i.postimg.cc/RC307Nr6/晚霞4.avif"
+                ]
+            },
+            {
+                id: 18,
+                name: "天鵝湖",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國",
+                features: "葉片邊緣有規則褶皺，出狀態時葉緣變紅，形似芭蕾舞裙，優雅別緻。",
+                care: "春秋：全日照展現形態。\n夏：遮陰通風，忌葉心積水。\n需要充足光照展現優美形態。",
+                price: "15 - 80元",
+                reason: "形態優雅獨特，像盛開的舞裙，顏值高且養護不難，適合愛好者收藏。",
+                images: [
+                    "https://i.postimg.cc/9XvQJCVS/天鵝湖5.webp",
+                    "https://i.postimg.cc/DftwBnFj/天鵝湖.jpg",
+                    "https://i.postimg.cc/jqGSZtK1/天鵝湖2.jpg",
+                    "https://i.postimg.cc/T2Z3CfGZ/天鵝湖4.jpg"
+                ]
+            },
+            {
+                id: 19,
+                name: "凝脂蓮",
+                category: "經典熱門",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "墨西哥 / 中國各地",
+                features: "葉片肥厚帶白霜，出狀態呈果凍色，葉尖變紅，並散發淡淡的甜香。",
+                care: "春秋：全日照，土乾透澆透。\n夏：通風控水，忌悶熱潮濕。\n需要充足光照和較大溫差上色。",
+                price: "10 - 60元",
+                reason: "兼具色、形、香，易群生成老樁，是景天屬中口碑極佳的經典品種。",
+                images: [
+                    "https://i.postimg.cc/gk8k7Q28/勞爾_凝脂蓮5.avif",
+                    "https://i.postimg.cc/rFxFH3wd/勞爾_凝脂蓮2.webp",
+                    "https://i.postimg.cc/VLnLhpkb/勞爾_凝脂蓮4.jpg",
+                    "https://i.postimg.cc/bNkN5WwS/勞爾_凝脂蓮3.jpg",
+                    "https://i.postimg.cc/qMyMFSvz/勞爾_凝脂蓮.jpg"
+                ]
+            },
+            {
+                id: 20,
+                name: "火狐狸",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科伽藍菜屬",
+                origin: "園藝雜交 / 中國各地",
+                features: "葉片獨特捲曲，狀似狐狸耳朵，狀態好時葉背變紅，形色兼備。",
+                care: "春秋：全日照維持捲曲。\n夏：強遮陰通風，嚴格控水。\n需要充足光照維持捲曲形態和色彩。",
+                price: "25 - 200元",
+                reason: "形態獨特，但需充足光照維持捲曲和色彩，對夏季養護要求高。",
+                images: [
+                    "https://i.postimg.cc/tJgCw47G/火狐狸.avif",
+                    "https://i.postimg.cc/BbvQknts/火狐狸2.webp",
+                    "https://i.postimg.cc/PJqr95J9/火狐狸3.jpg",
+                    "https://i.postimg.cc/2y58MS3D/火狐狸4.jpg"
+                ]
+            },
+            {
+                id: 21,
+                name: "白女王",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國精品培育",
+                features: "葉片圓潤如精緻瓷器，出狀態時呈粉白漸變色，質感高級，2025年熱門品種。",
+                care: "全年：嚴格控水，土乾透數天後再少量給水。\n夏：強遮陰通風。\n需要精細照料維持狀態。",
+                price: "100 - 800元",
+                reason: "品相與養護難度成正比，狀態極難長期維持，是熱門「貴貨」品種。",
+                images: [
+                    "https://i.postimg.cc/3rLwpmff/白女王2.jpg",
+                    "https://i.postimg.cc/ZnDKSzyx/白女王.jpg"
+                ]
+            },
+            {
+                id: 22,
+                name: "灯炮",
+                category: "高端收藏",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "番杏科肉錐花屬",
+                origin: "南非 / 南非、少量專業玩家溫室",
+                features: "番杏科極品，植株像一顆半透明的彩色燈泡，色彩夢幻多變。",
+                care: "春秋：充足柔和光照，極少量給水。\n夏：完全斷水休眠。養護難度極高。\n冬：保暖，少量或斷水。",
+                price: "數百 - 數千元，視品相而定",
+                reason: "養護難度極高，對光照、澆水週期要求嚴苛，僅供欣賞。",
+                images: [
+                    "https://i.postimg.cc/J7ThJZdM/灯炮.png",
+                    "https://i.postimg.cc/9XxfTZNh/灯炮2.jpg",
+                    "https://i.postimg.cc/Pf6qZYFd/灯炮3.avif",
+                    "https://i.postimg.cc/1RWz6wYS/灯炮4.jpg"
+                ]
+            },
+            {
+                id: 23,
+                name: "冰魄",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國精品培育",
+                features: "出狀態時通體乳白色，葉緣半透明，色彩純淨如冰如玉，極致狀態追求。",
+                care: "全年：嚴格控水。\n夏：強遮陰通風。\n冬：防凍。\n對光照和水分極為敏感。",
+                price: "200 - 1500元",
+                reason: "對光照和水分極為敏感，養護難度高，適合進階玩家追求極致狀態。",
+                images: [
+                    "https://i.postimg.cc/qMzvGq9K/冰魄3.avif",
+                    "https://i.postimg.cc/vHcZvTpg/冰魄2.jpg",
+                    "https://i.postimg.cc/TYp3c1Zr/冰魄.jpg",
+                    "https://i.postimg.cc/VLdkFv3n/冰魄4.webp"
+                ]
+            },
+            {
+                id: 24,
+                name: "皮皮蝦",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國精品培育",
+                features: "顏色隨季節變化大，狀態好時呈妖嬈的紅紫色，有辨識度，色彩「情緒化」。",
+                care: "春秋：全日照上色，適當控水。\n夏：遮陰，嚴格控水。\n需要豐富經驗才能養出極致狀態。",
+                price: "50 - 400元",
+                reason: "色彩「情緒化」，養護有挑戰性，需要經驗才能養出極致狀態，玩家圈熱議。",
+                images: [
+                    "https://i.postimg.cc/02F2XxsZ/皮皮蝦.jpg",
+                    "https://i.postimg.cc/SN3N1qhT/皮皮蝦3.avif",
+                    "https://i.postimg.cc/02F2Xxsn/皮皮蝦2.jpg",
+                    "https://i.postimg.cc/9FKFgVhJ/皮皮蝦4.jpg",
+                    "https://i.postimg.cc/RVyVp9BD/皮皮蝦5.jpg"
+                ]
+            },
+            {
+                id: 25,
+                name: "奶酪",
+                category: "高端收藏",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國精品培育",
+                features: "葉片圓潤飽滿，色澤呈奶油黃或橙粉色，有「糖心」質感，外觀可愛。",
+                care: "全年：精準控水，等葉片稍軟再少量給水。\n夏：強遮陰通風。\n「糖心」狀態極難維持。",
+                price: "80 - 600元",
+                reason: "「糖心」狀態極難長期維持，對養護環境（光照、通風、水）要求苛刻。",
+                images: [
+                    "https://i.postimg.cc/s2Rfyc1c/奶酪.avif",
+                    "https://i.postimg.cc/rpLycJzj/奶酪2.jpg",
+                    "https://i.postimg.cc/k5dM9cDT/奶酪3.jpg",
+                    "https://i.postimg.cc/s29j2hZJ/奶酪5.avif",
+                    "https://i.postimg.cc/FKQFmZ1P/奶酪4.jpg",
+                    "https://i.postimg.cc/SKpQqrjt/奶酪6.jpg"
+                ]
+            },
+            {
+                id: 26,
+                name: "劍司諾娃",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 / 中國、韓國精品培育",
+                features: "暗黑系代表，葉色黑紫，葉緣有妖嬈的波浪褶皺，妖異神秘，氣場獨特。",
+                care: "全年：需極強光照維持形態顏色。\n夏：適當控水。\n需要極端光照條件才能保持黑紫色和緊包形態。",
+                price: "30 - 300元",
+                reason: "需要極端光照條件才能保持黑紫色和緊包形態，極易徒長，養護有門檻。",
+                images: [
+                    "https://i.postimg.cc/6QLWQvGS/劍司諾娃2.jpg",
+                    "https://i.postimg.cc/GpJLpysf/劍司諾娃3.jpg",
+                    "https://i.postimg.cc/jjQxj7JG/劍司諾娃4.jpg",
+                    "https://i.postimg.cc/VNBfNCCz/劍司諾娃6.jpg"
+                ]
+            },
+            {
+                id: 27,
+                name: "熊童子",
+                category: "高端收藏",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科銀波錦屬",
+                origin: "南非 / 中國各地溫室",
+                features: "毛茸茸的熊爪葉，日照後「紅爪尖」憨態可掬，造型可愛人氣高。",
+                care: "春秋：全日照。\n夏：遮陰、通風、斷水關鍵。\n冬：全日照。\n夏季必須通風、控水，謹防掉葉。",
+                price: "15 - 80元",
+                reason: "造型可愛人氣高，但度夏有難度，對通風和控水要求嚴格，養好需一定經驗。",
+                images: [
+                    "https://i.postimg.cc/qqY0Fc9N/熊童子.jpg",
+                    "https://i.postimg.cc/L57RWkrL/熊童子2.webp",
+                    "https://i.postimg.cc/8c3DYdqv/熊童子3.jpg",
+                    "https://i.postimg.cc/T1SGsjZn/熊童子4.webp",
+                    "https://i.postimg.cc/hvwgY8Hp/熊童子5.jpg"
+                ]
+            },
+            {
+                id: 28,
+                name: "愛之蔓",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "蘿藦科吊燈花屬",
+                origin: "南非 / 中國各地",
+                features: "心形葉片，有錦斑品種，莖蔓柔軟，可垂掛數米，浪漫滿屋。",
+                care: "春秋：明亮散射光，土乾透澆透。\n夏冬：減少澆水。\n懸掛養護，給足空間。",
+                price: "10 - 100元",
+                reason: "形態浪漫，生長速度快，是垂吊多肉的代表，適合懸掛裝飾。",
+                images: [
+                    "https://i.postimg.cc/NMsg2j6F/愛之蔓2.jpg",
+                    "https://i.postimg.cc/Jnr1HzN4/愛之蔓.jpg",
+                    "https://i.postimg.cc/V6fY0kqY/愛之蔓3.jpg",
+                    "https://i.postimg.cc/V6fY0kqz/愛之蔓4.jpg",
+                    "https://i.postimg.cc/hjDSQtLG/愛之蔓5.webp"
+                ]
+            },
+            {
+                id: 29,
+                name: "玉綴/新玉綴",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "墨西哥 / 中國各地",
+                features: "葉片似迷你香蕉串，易爆盆，生長後如綠色瀑布般下垂，景觀效果震撼。",
+                care: "春秋：全日照防徒長。\n夏：遮陰，控水。\n冬：少量給水。\n極易爆盆，適合高盆或吊籃。",
+                price: "10 - 60元",
+                reason: "極易爆盆，打造「多肉瀑布」景觀的首選，養護簡單。",
+                images: [
+                    "https://i.postimg.cc/qqg4QDDF/玉綴.jpg",
+                    "https://i.postimg.cc/qR1psHwY/玉綴2.jpg",
+                    "https://i.postimg.cc/NMdQ6vDN/玉綴3.jpg",
+                    "https://i.postimg.cc/Ssgm6bdH/玉綴4.webp",
+                    "https://i.postimg.cc/nVwHMZCc/玉綴5.jpg",
+                    "https://i.postimg.cc/ZRwJ8zjt/玉綴6.jpg"
+                ]
+            },
+
+            {
+                id: 30,
+                name: "佛珠",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "菊科千里光屬",
+                origin: "南非 / 中國各地",
+                features: "葉片為翠綠圓球，形似串起的佛珠或鈴鐺，形態獨特，寓意好。",
+                care: "春秋：明亮散射光，土乾透澆透。\n夏：嚴格控水，通風。\n夏季極怕悶熱潮濕。",
+                price: "10 - 50元",
+                reason: "形態寓意好，但夏季極怕悶熱潮濕，養護需注意通風控水，是經典垂吊品種。",
+                images: [
+                    "https://i.postimg.cc/QNnXVsHL/佛珠2.webp",
+                    "https://i.postimg.cc/XNDVX3pb/佛珠.avif",
+                    "https://i.postimg.cc/sf0V1yvj/佛珠3.avif",
+                    "https://i.postimg.cc/FFn91m7K/佛珠4.avif",
+                    "https://i.postimg.cc/qBZkg0zk/佛珠5.jpg"
+                ]
+            },
+
+            {
+                id: 31,
+                name: "蝴蝶之舞",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科伽藍菜屬",
+                origin: "馬達加斯加 / 中國各地",
+                features: "葉片帶有優美波浪邊，光照下邊緣呈現粉色，像起舞的蝴蝶翅膀。",
+                care: "春秋：充足光照。\n夏：遮陰。\n冬：充足光照，減少澆水。\n相對好養，給予充足散射光即可。",
+                price: "8 - 40元",
+                reason: "形態優雅，葉邊如舞裙，養護難度低，適合點綴組合盆栽。",
+                images: [
+                    "https://i.postimg.cc/pXhPF7F4/蝴蝶之舞2.jpg",
+                    "https://i.postimg.cc/gkXGZ5Z5/蝴蝶之舞.avif",
+                    "https://i.postimg.cc/MKMzQ4QL/蝴蝶之舞3.webp",
+                    "https://i.postimg.cc/rFBMCJ1v/蝴蝶之舞4.jpg",
+                    "https://i.postimg.cc/4xpZ89wT/蝴蝶之舞6.jpg",
+                    "https://i.postimg.cc/kX0qFcNd/蝴蝶之舞5.webp"
+                ]
+            },
+            {
+                id: 32,
+                name: "雀扇",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科伽藍菜屬",
+                origin: "馬達加斯加 / 中國各地",
+                features: "葉片呈獨特扇形，覆絨毛和褐色斑紋，有復古雅緻的氣質。",
+                care: "春秋：充足光照。\n夏：遮陰通風，忌悶熱。\n冬：充足光照。\n生長較慢，澆水要格外謹慎。",
+                price: "15 - 70元",
+                reason: "形態特殊，生長較慢，喜溫暖乾燥，忌潮濕悶熱，是氣質型品種。",
+                images: [
+                    "https://i.postimg.cc/CL3SHNC5/雀扇.jpg",
+                    "https://i.postimg.cc/ncypYkKF/雀扇2.jpg",
+                    "https://i.postimg.cc/65ktL0V5/雀扇3.jpg",
+                    "https://i.postimg.cc/CxbYvqJ0/雀扇5.jpg",
+                    "https://i.postimg.cc/T3nGkDQ6/雀扇4.jpg"
+                ]
+            },
+            {
+                id: 33,
+                name: "銀狐之尾",
+                category: "垂吊與特殊形態",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科景天屬",
+                origin: "墨西哥 / 中國各地",
+                features: "葉片細長、覆白毛，垂吊生長，形似狐狸或松鼠尾巴，毛茸可愛。",
+                care: "全年：喜光，耐旱。忌潮濕，葉片易碰掉。\n適合懸掛栽培，為多肉組合增添線條。",
+                price: "15 - 70元",
+                reason: "獨特的毛茸垂吊形態，為多肉組合增添線條感和趣味性。",
+                images: [
+                    "https://i.postimg.cc/Dzyv8zdK/銀狐之尾.jpg",
+                    "https://i.postimg.cc/PqrXPqzj/銀狐之尾2.jpg"
+                ]
+            },
+            {
+                id: 34,
+                name: "碧光環",
+                category: "動物擬態大師",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "番杏科碧光環屬",
+                origin: "南非 / 專業玩家溫室",
+                features: "休眠甦醒後新葉對生細長，覆有銀白色軟毛，形似兔子耳朵，極度可愛。",
+                care: "春秋：溫和光照，土乾透澆透。\n夏：完全斷水休眠。\n夏季有明顯休眠期（葉片乾枯像枯草）。",
+                price: "50 - 500元",
+                reason: "有明顯休眠期，夏季養護不當極易死亡，是著名的「夏必死」挑戰品種。",
+                images: [
+                    "https://i.postimg.cc/Dw1FCX5W/碧光環.jpg",
+                    "https://i.postimg.cc/dVGvWynh/碧光環4.jpg",
+                    "https://i.postimg.cc/g23dMZ4R/碧光環2.png",
+                    "https://i.postimg.cc/bw186tLs/碧光環3.jpg",
+                    "https://i.postimg.cc/Qdcs6TSg/碧光環5.jpg",
+                    "https://i.postimg.cc/y80BfZnc/碧光環6.jpg"
+                ]
+            },
+            {
+                id: 35,
+                name: "三爪上弦月",
+                category: "動物擬態大師",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "菊科千里光屬",
+                origin: "園藝雜交 (日本) / 日、中、韓",
+                features: "葉片形態酷似躍出海面的小海豚，是著名的「動物形」多肉，風靡社交媒體。",
+                care: "全年：明亮散射光。\n春秋：土乾透澆透。\n夏：嚴格控水通風。嚴防夏季悶熱潮濕。",
+                price: "30 - 200元",
+                reason: "造型逼真可愛，風靡社交網路。養護關鍵在於提供穩定、明亮的散射光。",
+                images: [
+                    "https://i.postimg.cc/PqhH05Fc/三爪上弦月_(海豚弦月)5.jpg",
+                    "https://i.postimg.cc/HLHmFkPv/三爪上弦月_(海豚弦月)2.jpg",
+                    "https://i.postimg.cc/mrR4Kg6V/三爪上弦月_(海豚弦月)1.jpg",
+                    "https://i.postimg.cc/rpcT7wYj/三爪上弦月_(海豚弦月)4.jpg",
+                    "https://i.postimg.cc/PqhH05F2/三爪上弦月_(海豚弦月)3.jpg"
+                ]
+            },
+            {
+                id: 36,
+                name: "兔耳系列 (月兔耳/泰迪熊兔)",
+                category: "動物擬態大師",
+                difficulty: "★★☆☆☆",
+                difficultyLevel: "容易",
+                family: "景天科伽藍菜屬",
+                origin: "馬達加斯加 / 中國各地",
+                features: "葉片覆蓋絨毛，形似兔子耳朵，有灰白、金黃等多種顏色，其中「泰迪熊兔」絨毛棕黃。",
+                care: "春秋冬：全日照。\n夏：遮陰通風。土乾透澆透。\n可使絨毛與葉色更鮮明。",
+                price: "10 - 80元",
+                reason: "形態可愛，適應力強、繁殖容易，比熊童子更易養護，是擬態入門好選擇。",
+                images: [
+                    "https://i.postimg.cc/sxBC5Qvf/泰迪熊兔1.jpg",
+                    "https://i.postimg.cc/2yqNnb3P/泰迪熊兔.jpg",
+                    "https://i.postimg.cc/FzfX0d18/月兔耳3.jpg",
+                    "https://i.postimg.cc/cHkNKM4s/月兔耳2.jpg"
+                ]
+            },
+            {
+                id: 37,
+                name: "少將/紅嘴",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "番杏科肉錐花屬",
+                origin: "南非、納米比亞 / 專業玩家溫室",
+                features: "對生葉合生呈倒圓錐形，頂部有類似「嘴唇」的裂縫，形態極其奇特，番杏科珍品。",
+                care: "春秋：極少量給水，僅在葉片皺縮時沿盆邊給水。\n夏：完全斷水休眠。\n對環境變化極為敏感。",
+                price: "高，視品相而定",
+                reason: "養護難度極高，對環境（光照、水分）變化極為敏感，夏季需嚴格斷水休眠。",
+                images: [
+                    "https://i.postimg.cc/yxw4j1ZL/少將紅嘴.jpg",
+                    "https://i.postimg.cc/GtZwKLyj/少將紅嘴1.jpg",
+                    "https://i.postimg.cc/QCRGm8Tm/少將紅嘴3.jpg",
+                    "https://i.postimg.cc/44Mgs5SZ/少將紅嘴4.jpg",
+                    "https://i.postimg.cc/CMtgSNQM/少將紅嘴5.png",
+                    "https://i.postimg.cc/1RTQsHjQ/少將紅嘴6.jpg"
+                ]
+            },
+            {
+                id: 38,
+                name: "方塔",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科青鎖龍屬",
+                origin: "南非 / 中國、韓國精品培育",
+                features: "葉片十字形對生，層層堆疊，形成整齊的幾何塔狀或「開運竹」造型，幾何感強。",
+                care: "春秋：全日照維持塔形。\n夏：遮陰，嚴格控水。\n冬：幾乎斷水。\n光照不足易導致塔形鬆散。",
+                price: "20 - 150元",
+                reason: "形態穩定，幾何感極強，適合作為案頭清雅的裝飾，養護需一定經驗。",
+                images: [
+                    "https://i.postimg.cc/sDhRXhkZ/方塔4.avif",
+                    "https://i.postimg.cc/KcV2xNHT/方塔2.webp",
+                    "https://i.postimg.cc/xj72nR4L/方塔3.jpg"
+                ]
+            },
+            {
+                id: 39,
+                name: "山地玫瑰",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科蓮花掌屬",
+                origin: "加那利群島等地 / 中國、歐洲",
+                features: "夏季休眠時，葉片緊密包裹，形似一朵永不凋謝的玫瑰花苞，極具浪漫色彩。",
+                care: "春秋冬：全日照。\n夏：遮陰、斷水、通風，休眠期養護關鍵。\n嚴格控水或完全斷水，防止爛心。",
+                price: "20 - 200元",
+                reason: "季節性形態變化極具觀賞性，休眠期特徵明顯，養護需遵循其生長節律。",
+                images: [
+                    "https://i.postimg.cc/hPdqjdk1/山地玫瑰2.jpg",
+                    "https://i.postimg.cc/kXbd4Srm/山地玫瑰.png",
+                    "https://i.postimg.cc/X7C0J5M0/山地玫瑰5.jpg",
+                    "https://i.postimg.cc/vHVdBVJj/山地玫瑰4.jpg",
+                    "https://i.postimg.cc/bNtjJt7L/山地玫瑰3.jpg"
+                ]
+            },
+            {
+                id: 40,
+                name: "海帶彈簧草",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "風信子科哨兵花屬",
+                origin: "南非 / 專業玩家溫室",
+                features: "葉片呈長帶狀，自然扭曲捲曲，如同大海中的海帶或彈簧，動感十足。",
+                care: "生長季(涼季)：全日照，土乾透澆透。\n夏季休眠：完全斷水。\n有明顯生長與休眠週期。",
+                price: "50 - 300元",
+                reason: "形態奇特有趣，有明顯生長休眠週期，充足光照會使捲曲更甚，趣味性強。",
+                images: [
+                    "https://i.postimg.cc/Hk117LmR/海帶彈簧草4.jpg",
+                    "https://i.postimg.cc/L8FFZsS7/海帶彈簧草3.jpg",
+                    "https://i.postimg.cc/XY66yv3S/海帶彈簧草2.jpg",
+                    "https://i.postimg.cc/g2bb60dG/海帶彈簧草5.avif",
+                    "https://i.postimg.cc/vZww6mMR/海帶彈簧草1.webp"
+                ]
+            },
+            {
+                id: 41,
+                name: "小酒杯",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "景天科青鎖龍屬",
+                origin: "南非 / 中國、韓國精品培育",
+                features: "肉質葉向上環抱，形成一個中空的酒杯或小斗篷形狀，精巧可愛，形態獨一無二。",
+                care: "春秋：充足光照。\n夏：遮陰通風，嚴格控水。\n冬：充足光照。\n需仔細控制水分，避免葉心積水。",
+                price: "40 - 250元",
+                reason: "形態獨一無二，生長速度較慢。需仔細控制水分，避免葉心積水導致腐爛。",
+                images: [
+                    "https://i.postimg.cc/YCBBmSkv/小酒杯2.jpg",
+                    "https://i.postimg.cc/L8FFZsRY/小酒杯3.webp",
+                    "https://i.postimg.cc/P5nn8qh8/小酒杯.jpg"
+                ]
+            },
+ 	    {
+                id: 42,
+                name: "五十鈴玉",
+                category: "幾何奇觀與自然仿生",
+                difficulty: "★★★☆☆",
+                difficultyLevel: "中等",
+                family: "番杏科棒葉花屬",
+                origin: "南非、納米比亞 / 專業玩家溫室",
+                features: "圓柱形葉片頂端有透明的「窗」，用於在原生地沙石下吸收光線，形態呆萌有趣。",
+                care: "全年：極喜光。\n夏：嚴格遮陰並斷水。\n對水分敏感，寧乾勿濕。",
+                price: "20 - 100元",
+                reason: "經典「窗」類多肉，形態奇特，但對水分和光照敏感，養護有一定挑戰性。",
+                images: [
+                    "https://i.postimg.cc/SxGQS99Z/五十鈴玉5.jpg",
+                    "https://i.postimg.cc/8zbkpvvw/五十鈴玉2.webp",
+                    "https://i.postimg.cc/QdqN8774/五十鈴玉.jpg",
+                    "https://i.postimg.cc/K85cGTTJ/五十鈴玉4.webp",
+                    "https://i.postimg.cc/XYgNj55L/五十鈴玉3.jpg"
+                ]
+            },
+            {
+                id: 43,
+                name: "萬華鏡錦 ",
+                category: "頂級收藏",
+                difficulty: "★★★★★",
+                difficultyLevel: "極度困難",
+                family: "百合科十二卷屬",
+                origin: "園藝突變選育 (日本) / 頂級玩家溫室",
+                features: "十二卷中的夢幻逸品。葉片剔透如冰晶，通體呈現奶油黃或雪白色（全錦），或帶有極不規則的白色錦斑，色彩純淨無瑕。",
+                care: "全年：柔和明亮散射光。\n嚴格控水，介質需極透氣。\n錦化植株幾乎無葉綠素，生長極度緩慢。",
+                price: "數千 - 十萬元級",
+                reason: "錦化是萬分之一的自然突變。「全錦」植株幾乎無葉綠素，生長極度緩慢且難以維持，能存活的大型母本鳳毛麟角。",
+                images: [
+                    "https://i.postimg.cc/3xj5jHJX/萬華鏡錦.jpg",
+                    "https://i.postimg.cc/fR7n7hTY/萬華鏡錦2.jpg",
+                    "https://i.postimg.cc/Bn595GQH/萬華鏡錦3.jpg"
+                ]
+            },
+            {
+                id: 44,
+                name: "白帝城",
+                category: "頂級收藏",
+                difficulty: "★★★★★",
+                difficultyLevel: "極度困難",
+                family: "龍舌蘭科岩牡丹屬",
+                origin: "園藝選育 (原種產墨西哥) / 頂級玩家溫室",
+                features: "龍舌蘭科岩牡丹屬的殿堂級品種。\n植株呈精緻的蓮座狀，每片葉片邊緣都鑲有寬而清晰的乳白色或淡黃色錦斑（覆輪錦），對比強烈，氣質孤高。",
+                care: "需要極強光照和極度通風的環境，嚴格控水，生長極慢。\n穩定、對稱的覆輪錦極難獲得且繁殖成功率低。",
+                price: "高價，具體視品相、大小和錦斑質量而定",
+                reason: "生長速度以「年」為單位計算。穩定、對稱的覆輪錦極難獲得且繁殖成功率低，使得成株一株難求。",
+                images: [
+                    "https://i.postimg.cc/HLpGBPVZ/白帝城1.png",
+                    "https://i.postimg.cc/fbw4BgJj/白帝城4.jpg",
+                    "https://i.postimg.cc/0N8gcHb0/白帝城3.jpg",
+                    "https://i.postimg.cc/N0ghpP5x/白帝城2.jpg"
+                ]
+            },
+            {
+                id: 45,
+                name: "霓虹燈",
+                category: "頂級收藏",
+                difficulty: "★★★★★",
+                difficultyLevel: "極度困難",
+                family: "百合科十二卷屬",
+                origin: "園藝雜交與錦化選育 (日本) / 頂級玩家溫室",
+                features: "十二卷屬的「錦化之王」。\n葉片底色為暗黑或深綠，其上分佈著大面積、對比鮮明的亮白色或粉紅色錦斑，如同霓虹燈光，絢麗奪目。\n「冰山」是其極致白錦形態。",
+                care: "全年：穩定柔和光照。\n對水分和通風要求極高，養護如履薄冰。\n錦斑的質量直接決定價值。",
+                price: "數千 - 數萬元",
+                reason: "錦斑的面積、分佈、對比度直接決定價值。一株「陰陽錦」或「糊斑錦」的母本，是繁育者的聖杯，具有金融屬性。",
+                images: [
+                    "https://i.postimg.cc/QMS2Pk7j/霓虹燈2.avif",
+                    "https://i.postimg.cc/FKGMqgSd/霓虹燈4.jpg",
+                    "https://i.postimg.cc/vmXJjLn8/霓虹燈.webp",
+                    "https://i.postimg.cc/FKGMqgSL/霓虹燈3.avif"
+                ]
+            },
+            {
+                id: 46,
+                name: "阿房宮",
+                category: "頂級收藏",
+                difficulty: "★★★★★",
+                difficultyLevel: "極度困難",
+                family: "仙人掌科岩牡丹屬",
+                origin: "墨西哥 (受國際公約保護) / 合法流通極少",
+                features: "仙人掌科岩牡丹屬的「活化石」。\n其深綠色肌膚上有龜甲般的裂紋，錦化品種會在裂片凸起處呈現鮮明的黃色或白色，猶如金線鑲嵌，古樸而華麗。",
+                care: "需要極端透氣的礦質介質，極度耐旱，對養分需求極低，生長極緩。\n所有龜甲牡丹均受國際公約保護。",
+                price: "極高",
+                reason: "所有龜甲牡丹均受國際公約保護，合法流通的錦化植株稀缺至極，兼具審美與物種稀缺價值。",
+                images: [
+                    "https://i.postimg.cc/zBBs1bwV/阿房宮.jpg",
+                    "https://i.postimg.cc/k440d6NV/阿房宮2.jpg"
+                ]
+            },
+            {
+                id: 47,
+                name: "原始劍司諾娃",
+                category: "頂級收藏",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝優選 (源於墨西哥) / 頂級玩家優選培育",
+                features: "並非普通劍司諾娃，而是葉色黑紫如墨、葉型扭曲狂野、葉緣波浪強烈的原始種或特別優選個體。\n在強光下會泛起暗紅色光澤，妖異神秘。",
+                care: "需要極端強光照和精準控水才能維持極致狀態，易徒長。\n對光照與控水要求較高以維持最佳狀態。",
+                price: "數百 - 數千元",
+                reason: "多肉圈「暗黑系」的頂流。極致的顏色和形態需要完美的基因、極端的光照和精準的控養，可遇不可求。",
+                images: [
+                    "https://i.postimg.cc/TwwzXLj9/原始劍司諾娃2.jpg",
+                    "https://i.postimg.cc/xdyfdzbB/劍司諾娃5.jpg",
+                    "https://i.postimg.cc/cHHpNg7c/原始劍司諾娃1.jpg.jpg"
+                ]
+            },
+            {
+                id: 48,
+                name: "飛鳥",
+                category: "頂級收藏",
+                difficulty: "★★★★☆",
+                difficultyLevel: "困難",
+                family: "景天科擬石蓮花屬",
+                origin: "園藝雜交 (知名園藝師作品) / 頂級玩家圈",
+                features: "傳奇雜交品種。\n葉片帶有獨特的蠟質或金屬光澤，顏色可從青藍色過渡到橙粉色，葉背有驚豔的血斑。\n株型包裹，整體呈現出高級、清冷的美感。",
+                care: "需要充足光照和良好通風，對澆水節奏要求較高，忌葉心積水。\n繁殖不易且性狀不易穩定遺傳。",
+                price: "數百 - 數千元",
+                reason: "由知名園藝師雜交選育，血統和性狀獨一無二。繁殖不易且性狀不易穩定遺傳，使得正品大型母本非常稀有。",
+                images: [
+                    "https://i.postimg.cc/V66xcr9G/飛鳥_驚鴻仙子2.jpg",
+                    "https://i.postimg.cc/3RRsH4jc/飛鳥_驚鴻仙子3.jpg",
+                    "https://i.postimg.cc/633kN2V1/飛鳥_驚鴻仙子.jpg",
+                    "https://i.postimg.cc/wvvCdy5r/飛鳥_驚鴻仙子.avif"
+                ]
+            }
+
+        ];
+        
+        // 狀態管理
+        let state = {
+            currentCategory: 'all',
+            searchQuery: '',
+            showFavoritesOnly: false,
+            favorites: JSON.parse(localStorage.getItem('succulentFavorites')) || [],
+            currentPlantId: null,
+            carouselIndex: 0,
+            carouselImages: []
+        };
+        
+        // DOM元素
+        const plantsGrid = document.getElementById('plantsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const favoritesToggle = document.getElementById('favoritesToggle');
+        const totalCountElement = document.getElementById('totalCount');
+        const filteredCountElement = document.getElementById('filteredCount');
+        const favoritesCountElement = document.getElementById('favoritesCount');
+        
+        // 詳細資訊模態框元素
+        const detailModal = document.getElementById('detailModal');
+        const detailClose = document.getElementById('detailClose');
+        const detailPlantName = document.getElementById('detailPlantName');
+        const detailPlantCategory = document.getElementById('detailPlantCategory');
+        const detailPlantStars = document.getElementById('detailPlantStars');
+        const detailPlantLevel = document.getElementById('detailPlantLevel');
+        const detailPlantFamily = document.getElementById('detailPlantFamily');
+        const detailPlantOrigin = document.getElementById('detailPlantOrigin');
+        const detailPlantPrice = document.getElementById('detailPlantPrice');
+        const detailPlantReason = document.getElementById('detailPlantReason');
+        const detailPlantFeatures = document.getElementById('detailPlantFeatures');
+        const detailPlantCare = document.getElementById('detailPlantCare');
+        
+        // 輪播圖元素
+        const carouselImage = document.getElementById('carouselImage');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselCounter = document.getElementById('carouselCounter');
+        const carouselThumbnails = document.getElementById('carouselThumbnails');
+        
+        // 初始化
+        function init() {
+            renderPlants();
+            updateStats();
+            setupEventListeners();
+            
+            // 設置總數
+            totalCountElement.textContent = `共 ${plantsData.length} 個品種`;
+        }
+        
+        // 設置事件監聽器
+        function setupEventListeners() {
+            // 搜尋框輸入
+            searchInput.addEventListener('input', function() {
+                state.searchQuery = this.value.toLowerCase();
+                renderPlants();
+                updateStats();
+            });
+            
+            // 分類篩選按鈕
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    state.currentCategory = this.dataset.category;
+                    renderPlants();
+                    updateStats();
+                });
+            });
+            
+            // 收藏切換按鈕
+            favoritesToggle.addEventListener('click', function() {
+                state.showFavoritesOnly = !state.showFavoritesOnly;
+                
+                if (state.showFavoritesOnly) {
+                    this.classList.add('active');
+                    this.innerHTML = '<i class="fas fa-heart"></i> 顯示全部';
+                } else {
+                    this.classList.remove('active');
+                    this.innerHTML = '<i class="far fa-heart"></i> 只看收藏';
+                }
+                
+                renderPlants();
+                updateStats();
+            });
+            
+            // 輪播圖控制
+            carouselPrev.addEventListener('click', showPrevImage);
+            carouselNext.addEventListener('click', showNextImage);
+            
+            // 詳細資訊模態框關閉
+            detailClose.addEventListener('click', closeDetailModal);
+            
+            // 點擊詳細資訊遮罩層關閉
+            detailModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDetailModal();
+                }
+            });
+            
+            // ESC鍵關閉詳細資訊模態框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (detailModal.classList.contains('active')) closeDetailModal();
+                }
+            });
+        }
+        
+        // 渲染植物卡片
+        function renderPlants() {
+            // 清空當前網格
+            plantsGrid.innerHTML = '';
+            
+            // 篩選植物
+            const filteredPlants = plantsData.filter(plant => {
+                if (state.currentCategory !== 'all' && plant.category !== state.currentCategory) {
+                    return false;
+                }
+                
+                if (state.searchQuery) {
+                    const searchStr = `${plant.name} ${plant.family} ${plant.features}`.toLowerCase();
+                    if (!searchStr.includes(state.searchQuery)) {
+                        return false;
+                    }
+                }
+                
+                if (state.showFavoritesOnly && !state.favorites.includes(plant.id)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // 如果沒有結果
+            if (filteredPlants.length === 0) {
+                plantsGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-seedling"></i>
+                        <h3>未找到匹配的品種</h3>
+                        <p>請嘗試其他搜尋詞或篩選條件</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 渲染植物卡片
+            filteredPlants.forEach(plant => {
+                const isFavorited = state.favorites.includes(plant.id);
+                const imageCount = plant.images ? plant.images.length : 0;
+                const firstImage = plant.images && plant.images.length > 0 ? plant.images[0] : 'https://example.com/your-images/預設圖片.jpg';
+                
+                const plantCard = document.createElement('div');
+                plantCard.className = 'plant-card';
+                plantCard.dataset.id = plant.id;
+                plantCard.innerHTML = `
+                    <div class="plant-image">
+                        <img src="${firstImage}" alt="${plant.name}">
+                        ${imageCount > 1 ? `<div class="plant-image-count"><i class="fas fa-images"></i> ${imageCount}</div>` : ''}
+                    </div>
+                    <div class="plant-header">
+                        <div class="plant-name">
+                            ${plant.name}
+                            <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" data-id="${plant.id}">
+                                <i class="${isFavorited ? 'fas' : 'far'} fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="plant-category">${plant.category}</div>
+                        <div class="plant-difficulty">
+                            養護難度: 
+                            <span class="difficulty-stars">${plant.difficulty}</span>
+                        </div>
+                    </div>
+                    <div class="plant-preview">
+                        <div class="preview-row">
+                            <span class="preview-label">科屬:</span>
+                            <span class="preview-value">${plant.family}</span>
+                        </div>
+                        <br>
+                        <div class="preview-row">
+                            <span class="preview-label">產地:</span>
+                            <span class="preview-value">${plant.origin}</span>
+                        </div>
+                        <br>
+                        <div class="preview-row">
+                            <span class="preview-label">價格:</span>
+                            <span class="preview-value plant-price">${plant.price}</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="plant-actions">
+                        <button class="details-btn" data-id="${plant.id}">
+                            <i class="fas fa-info-circle"></i> 查看詳細資訊
+                        </button>
+                    </div>
+                `;
+                
+                plantsGrid.appendChild(plantCard);
+            });
+            
+            // 為新增的卡片添加事件監聽器
+            attachCardEventListeners();
+        }
+        
+        // 為卡片添加事件監聽器
+        function attachCardEventListeners() {
+            // 收藏按鈕
+            document.querySelectorAll('.favorite-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const plantId = parseInt(this.dataset.id);
+                    toggleFavorite(plantId);
+                });
+            });
+            
+            // 詳細資訊按鈕
+            document.querySelectorAll('.details-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const plantId = parseInt(this.dataset.id);
+                    openDetailModal(plantId);
+                });
+            });
+        }
+        
+        // 開啟詳細資訊模態框
+        function openDetailModal(plantId) {
+            const plant = plantsData.find(p => p.id === plantId);
+            if (!plant) return;
+            
+            state.currentPlantId = plantId;
+            state.carouselImages = plant.images || [];
+            state.carouselIndex = 0;
+            
+            // 填充詳細資訊
+            detailPlantName.textContent = plant.name;
+            detailPlantCategory.textContent = plant.category;
+            detailPlantStars.textContent = plant.difficulty;
+            detailPlantLevel.textContent = plant.difficultyLevel || getDifficultyLevel(plant.difficulty);
+            detailPlantFamily.textContent = plant.family;
+            detailPlantOrigin.textContent = plant.origin;
+            detailPlantPrice.textContent = plant.price;
+            detailPlantReason.textContent = plant.reason;
+            detailPlantFeatures.textContent = plant.features;
+            detailPlantCare.textContent = plant.care;
+            
+            // 更新輪播圖
+            updateCarousel();
+            
+            detailModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 更新輪播圖
+        function updateCarousel() {
+            if (state.carouselImages.length === 0) {
+                carouselImage.src = 'https://example.com/your-images/預設圖片.jpg';
+                carouselImage.alt = '預設多肉植物圖片';
+                carouselCounter.textContent = '0 / 0';
+                carouselThumbnails.innerHTML = '';
+                return;
+            }
+            
+            // 更新主圖片
+            carouselImage.src = state.carouselImages[state.carouselIndex];
+            carouselImage.alt = `多肉植物圖片 ${state.carouselIndex + 1}`;
+            
+            // 更新計數器
+            carouselCounter.textContent = `${state.carouselIndex + 1} / ${state.carouselImages.length}`;
+            
+            // 更新縮略圖
+            carouselThumbnails.innerHTML = '';
+            state.carouselImages.forEach((image, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = `carousel-thumbnail ${index === state.carouselIndex ? 'active' : ''}`;
+                thumbnail.innerHTML = `<img src="${image}" alt="縮略圖 ${index + 1}">`;
+                thumbnail.addEventListener('click', () => {
+                    state.carouselIndex = index;
+                    updateCarousel();
+                });
+                carouselThumbnails.appendChild(thumbnail);
+            });
+        }
+        
+        // 顯示上一張圖片
+        function showPrevImage() {
+            if (state.carouselImages.length === 0) return;
+            
+            state.carouselIndex--;
+            if (state.carouselIndex < 0) {
+                state.carouselIndex = state.carouselImages.length - 1;
+            }
+            
+            updateCarousel();
+        }
+        
+        // 顯示下一張圖片
+        function showNextImage() {
+            if (state.carouselImages.length === 0) return;
+            
+            state.carouselIndex++;
+            if (state.carouselIndex >= state.carouselImages.length) {
+                state.carouselIndex = 0;
+            }
+            
+            updateCarousel();
+        }
+        
+        // 根據星級獲取難度等級
+        function getDifficultyLevel(stars) {
+            switch(stars) {
+                case '★☆☆☆☆': return '極容易';
+                case '★★☆☆☆': return '容易';
+                case '★★★☆☆': return '中等';
+                case '★★★★☆': return '困難';
+                case '★★★★★': return '極度困難';
+                default: return '中等';
+            }
+        }
+        
+        // 關閉詳細資訊模態框
+        function closeDetailModal() {
+            detailModal.classList.remove('active');
+            document.body.style.overflow = '';
+            state.currentPlantId = null;
+            state.carouselImages = [];
+            state.carouselIndex = 0;
+        }
+        
+        // 切換收藏狀態
+        function toggleFavorite(plantId) {
+            const index = state.favorites.indexOf(plantId);
+            
+            if (index === -1) {
+                state.favorites.push(plantId);
+            } else {
+                state.favorites.splice(index, 1);
+            }
+            
+            localStorage.setItem('succulentFavorites', JSON.stringify(state.favorites));
+            renderPlants();
+            updateStats();
+        }
+        
+        // 更新統計資訊
+        function updateStats() {
+            const filteredPlants = plantsData.filter(plant => {
+                if (state.currentCategory !== 'all' && plant.category !== state.currentCategory) {
+                    return false;
+                }
+                
+                if (state.searchQuery) {
+                    const searchStr = `${plant.name} ${plant.family} ${plant.features}`.toLowerCase();
+                    if (!searchStr.includes(state.searchQuery)) {
+                        return false;
+                    }
+                }
+                
+                if (state.showFavoritesOnly && !state.favorites.includes(plant.id)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            filteredCountElement.textContent = `顯示 ${filteredPlants.length} 個`;
+            favoritesCountElement.textContent = `已收藏 ${state.favorites.length} 個`;
+        }
+        
+        // 頁面載入完成後初始化
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>

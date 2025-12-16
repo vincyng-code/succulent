@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个GitHub页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 600px;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .features {
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .features li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+        
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .counter {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+        
+        #count {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.5em;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 成功部署！</h1>
+        <p>恭喜！你的 HTML 页面已经在 GitHub Pages 上成功运行。</p>
+        
+        <div class="features">
+            <p><strong>页面特性：</strong></p>
+            <ul>
+                <li>✅ 响应式设计（适配手机和电脑）</li>
+                <li>✅ 现代化渐变背景</li>
+                <li>✅ 交互式按钮效果</li>
+                <li>✅ JavaScript 计数器功能</li>
+                <li>✅ 美观的阴影和圆角设计</li>
+            </ul>
+        </div>
+        
+        <p>你可以通过 GitHub Pages 链接在任何设备上访问此页面。</p>
+        
+        <div class="counter">
+            点击次数：<span id="count">0</span>
+            <br><br>
+            <a href="#" class="button" id="clickBtn">点击我！</a>
+            <a href="#" class="button" id="resetBtn">重置</a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9em; color: #888;">
+            页面更新时间：<span id="updateTime"></span>
+        </p>
+    </div>
+
+    <script>
+        // 计数器功能
+        let count = 0;
+        const countElement = document.getElementById('count');
+        const clickBtn = document.getElementById('clickBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        clickBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            count++;
+            countElement.textContent = count;
+            // 添加点击效果
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 100);
+        });
+        
+        resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            count = 0;
+            countElement.textContent = count;
+        });
+        
+        // 显示更新时间
+        document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+        
+        // 添加加载动画
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.querySelector('.container').style.transition = 'opacity 0.5s, transform 0.5s';
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
